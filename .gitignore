@@ -1,0 +1,9 @@
+.ipynb_checkpoints/
+anaconda_projects/
+archive/
+data/raw/
+data/interim/
+data/processed/
+*.parquet
+*.joblib
+__pycache__/
