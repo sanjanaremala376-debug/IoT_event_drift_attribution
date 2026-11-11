@@ -1,8 +1,0 @@
-window_group,label,windows
-pure,DRIFT,1206
-pure,EVENT,1206
-pure,EVENT_DRIFT,1206
-pure,NORMAL,1368
-transition,DRIFT,90
-transition,EVENT,90
-transition,EVENT_DRIFT,90

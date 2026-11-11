@@ -1,5 +1,0 @@
-variable,raw_records_missing_%,raw_records_invalid_%,grid_missing_%_all,grid_missing_%_train,grid_missing_%_validation,grid_missing_%_test
-temperature,0.0,2.41,33.62,27.8,51.18,43.21
-humidity,0.0,1.69,33.12,27.8,51.41,39.66
-light,3.91,3.91,34.82,30.2,52.52,38.65
-voltage,0.0,0.04,32.03,27.34,50.12,35.84

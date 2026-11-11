@@ -1,0 +1,210 @@
+{
+  "input_file": "feature_dataset_AF_v2.parquet",
+  "input_sha256": "f81ec4bdcc1186ac427a6af2042a327ae40ad7ccf34c7d23cef8060faefe228b",
+  "feature_config_file": "feature_config_AF_v2.json",
+  "feature_sets": {
+    "A": [
+      "t_mean",
+      "t_std",
+      "t_min",
+      "t_max",
+      "t_mean_diff",
+      "t_mean_abs_diff",
+      "t_slope",
+      "t_long_slope",
+      "peer_median_level",
+      "peer_slope",
+      "dev_mean",
+      "dev_std",
+      "dev_slope",
+      "dev_long_slope",
+      "level_closeness",
+      "peer_corr"
+    ],
+    "F": [
+      "t_std",
+      "t_mean_diff",
+      "t_mean_abs_diff",
+      "t_slope",
+      "t_long_slope",
+      "peer_slope",
+      "dev_mean",
+      "dev_std",
+      "dev_slope",
+      "dev_long_slope",
+      "level_closeness",
+      "peer_corr",
+      "agree_sign",
+      "dev_mean_adj",
+      "peer_level_rel"
+    ],
+    "G": [
+      "t_std",
+      "t_mean_diff",
+      "t_mean_abs_diff",
+      "t_slope",
+      "t_long_slope",
+      "peer_slope",
+      "dev_mean",
+      "dev_std",
+      "dev_slope",
+      "dev_long_slope",
+      "level_closeness",
+      "peer_corr",
+      "agree_sign",
+      "dev_mean_adj"
+    ],
+    "H": [
+      "t_mean",
+      "t_std",
+      "t_min",
+      "t_max",
+      "t_mean_diff",
+      "t_mean_abs_diff",
+      "t_slope",
+      "t_long_slope",
+      "peer_median_level",
+      "peer_slope",
+      "dev_mean",
+      "dev_std",
+      "dev_slope",
+      "dev_long_slope",
+      "level_closeness",
+      "peer_corr",
+      "agree_sign",
+      "dev_mean_adj"
+    ]
+  },
+  "labels": [
+    "NORMAL",
+    "DRIFT",
+    "EVENT",
+    "EVENT_DRIFT"
+  ],
+  "conditions": {
+    "baseline": [
+      "NORMAL",
+      "DRIFT_RAMP",
+      "EVENT_WARM",
+      "ED_WARM_RAMP"
+    ],
+    "cool_ramp": [
+      "NORMAL",
+      "DRIFT_RAMP",
+      "EVENT_COOL",
+      "ED_COOL_RAMP"
+    ],
+    "warm_step": [
+      "NORMAL",
+      "DRIFT_STEP",
+      "EVENT_WARM",
+      "ED_WARM_STEP"
+    ],
+    "cool_step": [
+      "NORMAL",
+      "DRIFT_STEP",
+      "EVENT_COOL",
+      "ED_COOL_STEP"
+    ]
+  },
+  "training_regimes": {
+    "W": [
+      "DRIFT_RAMP",
+      "ED_WARM_RAMP",
+      "EVENT_WARM",
+      "NORMAL"
+    ],
+    "ALL": [
+      "DRIFT_RAMP",
+      "DRIFT_STEP",
+      "ED_COOL_RAMP",
+      "ED_COOL_STEP",
+      "ED_WARM_RAMP",
+      "ED_WARM_STEP",
+      "EVENT_COOL",
+      "EVENT_WARM",
+      "NORMAL"
+    ]
+  },
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "n_trees_main": 300,
+  "grid": [
+    {
+      "min_samples_leaf": 1,
+      "max_features": "sqrt"
+    },
+    {
+      "min_samples_leaf": 1,
+      "max_features": 0.5
+    },
+    {
+      "min_samples_leaf": 5,
+      "max_features": "sqrt"
+    },
+    {
+      "min_samples_leaf": 5,
+      "max_features": 0.5
+    },
+    {
+      "min_samples_leaf": 20,
+      "max_features": "sqrt"
+    },
+    {
+      "min_samples_leaf": 20,
+      "max_features": 0.5
+    }
+  ],
+  "chosen_hyperparameters": {
+    "W/A": {
+      "min_samples_leaf": 20,
+      "max_features": "sqrt"
+    },
+    "W/F": {
+      "min_samples_leaf": 1,
+      "max_features": "sqrt"
+    },
+    "W/G": {
+      "min_samples_leaf": 20,
+      "max_features": 0.5
+    },
+    "W/H": {
+      "min_samples_leaf": 1,
+      "max_features": "sqrt"
+    },
+    "ALL/A": {
+      "min_samples_leaf": 20,
+      "max_features": "sqrt"
+    },
+    "ALL/F": {
+      "min_samples_leaf": 5,
+      "max_features": "sqrt"
+    },
+    "ALL/G": {
+      "min_samples_leaf": 5,
+      "max_features": "sqrt"
+    },
+    "ALL/H": {
+      "min_samples_leaf": 20,
+      "max_features": "sqrt"
+    }
+  },
+  "imputation": "median fit on the fitting rows only, separately per model fit",
+  "primary_rows": "pure windows; transitions evaluated separately",
+  "loeo": {
+    "n_trees": 150,
+    "fixed_params": {
+      "min_samples_leaf": 5,
+      "max_features": "sqrt"
+    },
+    "episodes": 18
+  },
+  "sklearn_version": "1.9.1",
+  "pandas_version": "2.2.2",
+  "warning": "Synthetic-data evidence only; 4 held-out test episodes; overlapping windows; voltage shift not handled; step-vs-ramp average magnitude differs."
+}

@@ -1,0 +1,17 @@
+feature,group,definition,window,relative_cost,memory,incremental_update,units,causal,uses_labels
+t_mean,target,mean of valid target values,short,LOW,O(1) accumulator,yes (running sum),C,uses only minutes <= window_end,False
+t_std,target,standard deviation (ddof=0) of valid target values,short,LOW,O(1) accumulators,"yes (running sum, sum of squares)",C,uses only minutes <= window_end,False
+t_min,target,minimum valid target value,short,LOW,needs W-sample buffer,no (sliding min needs the buffer),C,uses only minutes <= window_end,False
+t_max,target,maximum valid target value,short,LOW,needs W-sample buffer,no (sliding max needs the buffer),C,uses only minutes <= window_end,False
+t_mean_diff,target,mean of differences between consecutive valid target values (signed),short,LOW,O(1) + last value,yes,C per step,uses only minutes <= window_end,False
+t_mean_abs_diff,target,mean absolute difference between consecutive valid target values,short,LOW,O(1) + last value,yes,C per step,uses only minutes <= window_end,False
+t_slope,target,least-squares slope of target vs relative minute (deg C / min),short,LOW,O(1) sums; W buffer to drop old samples,yes (running sums) with buffer,C/min,uses only minutes <= window_end,False
+t_long_slope,target,same slope over the long window (slow drift indicator),long,LOW,O(1) sums; L buffer,yes (running sums) with buffer,C/min,uses only minutes <= window_end,False
+peer_median_level,peer,mean over the window of the per-minute peer median (peer_ref),short,LOW,O(P) per minute (sort of <=4 values) + O(1),yes,C,uses only minutes <= window_end,False
+peer_slope,peer,least-squares slope of peer_ref (shared change indicator),short,LOW,O(1) sums; W buffer,yes with buffer,C/min,uses only minutes <= window_end,False
+dev_mean,peer,mean of dev = target - peer_ref,short,LOW,O(1),yes,C,uses only minutes <= window_end,False
+dev_std,peer,standard deviation of dev (peer deviation spread),short,LOW,O(1),yes,C,uses only minutes <= window_end,False
+dev_slope,peer,least-squares slope of dev,short,LOW,O(1) sums; W buffer,yes with buffer,C/min,uses only minutes <= window_end,False
+dev_long_slope,peer,least-squares slope of dev over the long window (target separating from peers),long,LOW,O(1) sums; L buffer,yes with buffer,C/min,uses only minutes <= window_end,False
+peer_agreement,peer,"fraction of valid (target, peer, minute) pairs with |target - peer| <= agreement_threshold_c",short,LOW,O(P) per minute + 2 counters,yes,fraction 0-1,uses only minutes <= window_end,False
+peer_corr,peer,Pearson correlation between target and peer_ref over the window,short,MEDIUM,O(1) cross-sums; W buffer,"yes with buffer, but needs divisions/sqrt",unitless -1..1,uses only minutes <= window_end,False

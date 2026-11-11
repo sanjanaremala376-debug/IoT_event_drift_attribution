@@ -1,5 +1,0 @@
-variable,missing,missing_%,outside_range,outside_range_%,valid_range,min,median,max
-temperature,372,0.02,408133,17.72,0.0 to 50.0,-38.4,22.4482,385.568
-humidity,371,0.02,299084,12.99,0.0 to 100.0,-8983.13,39.2803,137.512
-light,93205,4.05,0,0.0,0.0 to 2000.0,0.0,158.24,1847.36
-voltage,0,0.0,2746,0.12,2.0 to 3.0,0.00910083,2.52732,18.56
