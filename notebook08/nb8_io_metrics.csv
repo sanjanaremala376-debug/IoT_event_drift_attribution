@@ -1,0 +1,2 @@
+measurement,file_size_mb,rows,columns,repeats,median_ms,p95_ms,p99_ms,mean_ms
+read_feature_parquet,1.6171884536743164,11826,53,5,65.17170002916828,66.89786002971232,67.18117203563452,65.36898000631481

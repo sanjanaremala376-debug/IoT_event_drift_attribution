@@ -1,0 +1,5 @@
+variable,missing,invalid_but_present,valid,total
+temperature,63,44880,1820427,1865370
+humidity,62,31476,1833832,1865370
+light,72975,0,1792395,1865370
+voltage,0,815,1864555,1865370

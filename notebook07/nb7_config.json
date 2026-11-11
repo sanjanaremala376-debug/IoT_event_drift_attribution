@@ -1,0 +1,26 @@
+{
+  "source_predictions": "outputs\\notebook06_v2\\nb6_v2_predictions.parquet",
+  "source_features": "data\\processed\\feature_dataset_AF_v2.parquet",
+  "primary_set": "G",
+  "exploratory_set": "I",
+  "reference_set": "F",
+  "correction_bound_train_abs_deviation_q95": 3.7653087174650772,
+  "loeo_unit": "episode",
+  "loeo_scope": "feature-based baselines only; saved NB6 predictions do not establish 14-fold classifier LOEO",
+  "design_episodes": "train + validation only (14 episodes)",
+  "test_episodes": "four; scored once; already seen for feature-set claims",
+  "stress_tests": [
+    "peer_dropout",
+    "contaminated_peer",
+    "common_mode_drift"
+  ],
+  "trust_score": "blocked until exact paper Eq. 4 is transcribed; no equation invented",
+  "limitations": [
+    "synthetic injected scenarios",
+    "overlapping windows",
+    "four already-seen test episodes",
+    "I post-hoc exploratory",
+    "window-level correction proxy is not validated minute-level reconstruction",
+    "NB6 saved decisions are frozen during stress tests; baseline detectors are recomputed from perturbed evidence"
+  ]
+}
